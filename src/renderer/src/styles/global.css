@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── macOS native feel ──────────────────────────────────────────────────── */
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+  color: #f1f5f9;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Allow text selection only in content areas */
+.selectable {
+  user-select: text;
+}
+
+/* ─── Custom scrollbar ───────────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ─── Drag region for frameless window ──────────────────────────────────── */
+
+.drag-region {
+  -webkit-app-region: drag;
+}
+.no-drag {
+  -webkit-app-region: no-drag;
+}
+
+/* ─── Panel glass morphism ───────────────────────────────────────────────── */
+
+.panel {
+  @apply rounded-2xl border border-white/10 overflow-hidden;
+  background: rgba(28, 28, 36, 0.7);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* ─── Panel header ───────────────────────────────────────────────────────── */
+
+.panel-header {
+  @apply flex items-center justify-between px-4 py-3 border-b border-white/5;
+}
+
+.panel-title {
+  @apply text-sm font-semibold text-white/80 tracking-wide uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ─── Buttons ────────────────────────────────────────────────────────────── */
+
+.btn-icon {
+  @apply no-drag rounded-lg p-1.5 text-white/50 hover:text-white/90 hover:bg-white/10 transition-colors cursor-default;
+}
+
+.btn-primary {
+  @apply no-drag px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium transition-colors cursor-default;
+}
+
+/* ─── Input ──────────────────────────────────────────────────────────────── */
+
+input.glass-input, textarea.glass-input {
+  @apply no-drag bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder-white/30 outline-none w-full;
+  @apply focus:border-blue-500/60 focus:ring-1 focus:ring-blue-500/30 transition-all;
+}
+
+/* ─── Tag pill ───────────────────────────────────────────────────────────── */
+
+.tag {
+  @apply text-xs px-2 py-0.5 rounded-full font-medium;
+}
+
+/* ─── Priority colors ────────────────────────────────────────────────────── */
+
+.priority-high   { @apply text-red-400 bg-red-400/10; }
+.priority-medium { @apply text-amber-400 bg-amber-400/10; }
+.priority-low    { @apply text-green-400 bg-green-400/10; }
+
+/* ─── Typing cursor for Claude ───────────────────────────────────────────── */
+
+.typing-cursor::after {
+  content: '▋';
+  animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ─── Loading shimmer ────────────────────────────────────────────────────── */
+
+.shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s infinite;
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}

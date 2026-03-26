@@ -1,0 +1,40 @@
+appId: com.macdashboard.app
+productName: Mac Dashboard
+copyright: Copyright © 2026
+
+directories:
+  buildResources: build
+
+files:
+  - dist-electron
+  - '!**/.vscode/*'
+  - '!src/*'
+
+mac:
+  target:
+    - target: dmg
+      arch: [x64, arm64]
+  entitlements: build/entitlements.mac.plist
+  entitlementsInherit: build/entitlements.mac.plist
+  hardenedRuntime: true
+  gatekeeperAssess: false
+  category: public.app-category.productivity
+
+dmg:
+  contents:
+    - x: 130
+      y: 220
+    - x: 410
+      y: 220
+      type: link
+      path: /Applications
+
+nsis:
+  artifactName: ${name}-${version}-setup.${ext}
+  shortcutName: ${productName}
+  uninstallDisplayName: ${productName}
+  createDesktopShortcut: always
+
+publish:
+  provider: generic
+  url: https://example.com/auto-update

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <!-- Allow AppleScript automation for Mail, Notes, Reminders, Calendar -->
+  <key>com.apple.security.automation.apple-events</key>
+  <true/>
+  <!-- Allow JIT compilation needed by some node modules -->
+  <key>com.apple.security.cs.allow-jit</key>
+  <true/>
+  <!-- Allow unsigned executable memory (needed by Electron's V8) -->
+  <key>com.apple.security.cs.allow-unsigned-executable-memory</key>
+  <true/>
+  <!-- Network access for weather, news, Claude APIs -->
+  <key>com.apple.security.network.client</key>
+  <true/>
+  <!-- User data access -->
+  <key>com.apple.security.files.user-selected.read-write</key>
+  <true/>
+</dict>
+</plist>

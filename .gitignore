@@ -1,0 +1,16 @@
+node_modules/
+dist/
+dist-electron/
+out/
+.DS_Store
+*.log
+.env
+.env.local
+
+# Electron builder output
+release/
+
+# SQLite DB (local user data, not source)
+*.db
+*.db-shm
+*.db-wal
